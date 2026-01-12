@@ -39,3 +39,7 @@ function resetTimer() {
   document.getElementById("startBtn").disabled = false;
   document.getElementById("endBtn").disabled = true;
 }
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
