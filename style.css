@@ -1,0 +1,74 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Page layout */
+body {
+  min-height: 100vh;
+  background: #0f172a; /* dark blue */
+  color: #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* App container */
+.app {
+  background: #020617;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Title */
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Timer display */
+#timer {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1.5rem 0;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#startBtn {
+  background: #22c55e;
+  color: #020617;
+}
+
+#endBtn {
+  background: #ef4444;
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Small text */
+.note {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-top: 1rem;
+}
