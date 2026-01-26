@@ -75,13 +75,3 @@ function runTimer(timerDisplay, startBtn, taskInput, currentTask) {
   }
  }, 1000);
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
-
-window.addEventListener("beforeunload", (e) => {
-  if (running) {
-  e.preventDefault();
-  e.returnValue = "";
-  }
-});
