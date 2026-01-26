@@ -8,8 +8,7 @@ function startTimer() {
   running = true;
 
   document.getElementById("startBtn").disabled = true;
-  document.getElementById("endBtn").disabled = false;
-
+  
   timerInterval = setInterval(() => {
     timeLeft--;
 
@@ -26,18 +25,11 @@ function startTimer() {
     }
   }, 1000);
 }
-function endSession() {
-  cearInterval(timerInterval);
-  alert("Session ended early.");
-  resetTimer();
-}
-
 function resetTimer() {
   running = false;
   timeLeft = 25 * 60;
   document.getElementById("timer").textContent = "25:00";
   document.getElementById("startBtn").disabled = false;
-  document.getElementById("endBtn").disabled = true;
 }
 
 
