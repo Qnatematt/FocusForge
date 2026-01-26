@@ -7,7 +7,7 @@ function startTimer() {
   if (running) return; // prevents restarting
   running = true;
 
-  document.getElementById("startBtn").disabled = true;
+  document.getElementById("startBtn").addEventListener("click", startTimer);
   
   timerInterval = setInterval(() => {
     timeLeft--;
