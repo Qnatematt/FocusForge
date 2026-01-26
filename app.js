@@ -35,9 +35,6 @@ function resetTimer() {
   document.getElementById("endBtn").disabled = true;
 }
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
 window.addEventListener("beforeunload", (e) => {
   if (running) {
   e.preventDefault();
