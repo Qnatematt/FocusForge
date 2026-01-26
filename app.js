@@ -26,6 +26,11 @@ function startTimer() {
     }
   }, 1000);
 }
+function endSession() {
+  cearInterval(timerInterval);
+  alert("Session ended early.");
+  resetTimer();
+}
 
 function resetTimer() {
   running = false;
@@ -33,6 +38,11 @@ function resetTimer() {
   document.getElementById("timer").textContent = "25:00";
   document.getElementById("startBtn").disabled = false;
   document.getElementById("endBtn").disabled = true;
+}
+
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
 }
 
 window.addEventListener("beforeunload", (e) => {
