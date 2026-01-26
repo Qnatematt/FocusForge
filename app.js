@@ -1,35 +1,58 @@
-let timeLeft = 25 * 60; // seconds
+const STUDY_TIME = 25 * 60; // seconds
 let timerInterval = null;
-let running = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+ const startBtn = document.getElementById("startBtn");
+ const timerDisplay = document.getElementById("timer");
+
+ startBtn.addEventListener("click", startTimer);
+
+ // Resume timer if page was reloaded
+ if (localStorage.getItem("endTime")) {
+   startBtn.disabled = true;
+   runTimer(timerDisplay, startBtn);
+  }
+});
 
 function startTimer() {
-  console.log("Timer started");
-  if (running) return; // prevents restarting
-  running = true;
+ if (localStorage.getItem("endTime")) return;
 
-  document.getElementById("startBtn").addEventListener("click", startTimer);
-  
-  timerInterval = setInterval(() => {
-    timeLeft--;
+ const endTime = Date.now() + STUDY_TIME * 1000;
+ localStorage.setItem("endTime", endTime);
 
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
+ const startBtn = document.getElementById("startBtn");
+ const timerDisplay = document.getElementById("timer");
 
-    document.getElementById("timer").textContent =
-    `${minutes}:${seconds.toString().padStart(2, "0")}`;
-
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      alert("Session complete!");
-      resetTimer();
-    }
-  }, 1000);
+ startBtn.disabled = true;
+ runTimer(timerDisplay, startBtn);
 }
-function resetTimer() {
-  running = false;
-  timeLeft = 25 * 60;
-  document.getElementById("timer").textContent = "25:00";
-  document.getElementById("startBtn").disabled = false;
+
+function runTimer(timerDisplay, startBtn) {
+ clearInterval(timerInterval);
+
+ timerInterval = setInterval(() => {
+   const endTime = localStorage.getItem("endTime");
+   if (!endTime) return;
+
+   const timeLeft = Math.max(
+     0,
+     Math.floor((endTime - Date.now()) / 1000)
+   );
+
+   const minutes = Math.floor(timeLeft / 60);
+   const seconds = timeLeft % 60;
+
+   timerDisplay.textContent =
+     `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+   if (timeLeft <= 0) {
+     clearInterval(timerInterval);
+     localStorage.removeItem("endTime");
+     alert("Session complete!");
+     startBtn.disabled = false;
+     timerDisplay.textContent = "25:00";
+   }
+ }, 1000);
 }
 
 
