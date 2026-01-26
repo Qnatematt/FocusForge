@@ -27,13 +27,6 @@ function startTimer() {
   }, 1000);
 }
 
-function endSession() {
-  console.log("Session ended");
-  clearInterval(timerInterval);
-  alert("Session ended early.");
-  resetTimer();
-}
-
 function resetTimer() {
   running = false;
   timeLeft = 25 * 60;
