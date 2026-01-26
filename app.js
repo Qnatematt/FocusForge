@@ -3,6 +3,7 @@ let timerInterval = null;
 let running = false;
 
 function startTimer() {
+  console.log("Timer started");
   if (running) return; // prevents restarting
   running = true;
 
@@ -27,6 +28,7 @@ function startTimer() {
 }
 
 function endSession() {
+  console.log("Session ended");
   clearInterval(timerInterval);
   alert("Session ended early.");
   resetTimer();
