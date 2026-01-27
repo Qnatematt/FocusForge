@@ -86,3 +86,19 @@ input {
   margin-top: 0.75rem;
   font-size: 0.9rem;
   color: #a5b4fc;
+}
+
+input {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+/* Placeholder text */
+input::placeholder {
+  color: #9ca3af;
+  opacity: 1; /* important for some browsers */
+}
+
+input {
+  border: 1px solid #334155;
+}
